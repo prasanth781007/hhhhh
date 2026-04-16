@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel – Virtual Tribal Tourism</title>
+  <meta name="description" content="Admin dashboard to manage donations, view donor records, and track payments." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- ===================== LOGIN SCREEN ===================== -->
+<div class="admin-login-wrap" id="adminLogin">
+  <div class="admin-login-card">
+    <div class="admin-login-header">
+      <div class="admin-login-icon">🔐</div>
+      <h2>Admin Login</h2>
+      <p>Enter credentials to access the dashboard</p>
+    </div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="adminUser">Username <span style="color:var(--clr-primary-light)">*</span></label>
+        <input type="text" id="adminUser" class="form-control" placeholder="admin" autocomplete="username" required />
+      </div>
+      <div class="form-group">
+        <label for="adminPass">Password <span style="color:var(--clr-primary-light)">*</span></label>
+        <input type="password" id="adminPass" class="form-control" placeholder="••••••••" autocomplete="current-password" required />
+      </div>
+      <button type="submit" class="donate-submit-btn" style="margin-top:0.5rem;">
+        <span class="btn-text">🔓 Sign In</span>
+      </button>
+      <p style="text-align:center; margin-top:1rem; font-size:0.8rem; color:var(--clr-mid);">
+        Default: <strong style="color:var(--clr-accent)">admin</strong> / <strong style="color:var(--clr-accent)">admin123</strong>
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== DASHBOARD ===================== -->
+<div class="admin-layout" id="adminDashboard" style="display:none;">
+
+  <!-- Sidebar Overlay for mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo-icon">🌿</div>
+      <div class="sidebar-logo-text">
+        <h3>VTT Admin</h3>
+        <span>Dashboard</span>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="#" class="sidebar-nav-item active" data-section="dashboard">
+        <span class="sidebar-nav-icon">📊</span>
+        <span class="sidebar-nav-label">Dashboard</span>
+      </a>
+      <a href="#" class="sidebar-nav-item" data-section="donors">
+        <span class="sidebar-nav-icon">👥</span>
+        <span class="sidebar-nav-label">Donors</span>
+        <span class="sidebar-badge" id="donorCount">24</span>
+      </a>
+      <a href="#" class="sidebar-nav-item" data-section="payments">
+        <span class="sidebar-nav-icon">💳</span>
+        <span class="sidebar-nav-label">Payments</span>
+      </a>
+
+      <div class="sidebar-section-label">Management</div>
+      <a href="#" class="sidebar-nav-item" data-section="reports">
+        <span class="sidebar-nav-icon">📈</span>
+        <span class="sidebar-nav-label">Reports</span>
+      </a>
+      <a href="#" class="sidebar-nav-item" data-section="settings">
+        <span class="sidebar-nav-icon">⚙️</span>
+        <span class="sidebar-nav-label">Settings</span>
+      </a>
+      <a href="index.html" class="sidebar-nav-item">
+        <span class="sidebar-nav-icon">🌐</span>
+        <span class="sidebar-nav-label">View Website</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">👤</div>
+        <div class="sidebar-user-info">
+          <h5>Admin User</h5>
+          <p>Super Admin</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main" id="adminMain">
+    <!-- Top Bar -->
+    <div class="admin-topbar">
+      <div class="topbar-left">
+        <button class="topbar-btn" id="mobileSidebarToggle" style="display:none;" aria-label="Open sidebar">☰</button>
+        <div>
+          <h1 id="pageTitle">Dashboard</h1>
+          <p id="pageSubtitle">Welcome back, Admin</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-btn" aria-label="Notifications">
+          🔔
+          <span class="topbar-notif-badge">3</span>
+        </button>
+        <button class="topbar-btn" id="logoutBtn" aria-label="Logout">🚪</button>
+      </div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- ============ DASHBOARD SECTION ============ -->
+      <div class="admin-section active" id="sec-dashboard">
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon orange">💰</div>
+            <div class="kpi-data">
+              <h3 id="kpiTotal">₹25,00,000</h3>
+              <p>Total Donations</p>
+            </div>
+            <span class="kpi-change up">↑ 12%</span>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon yellow">👥</div>
+            <div class="kpi-data">
+              <h3 id="kpiDonors">1,247</h3>
+              <p>Total Donors</p>
+            </div>
+            <span class="kpi-change up">↑ 8%</span>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon green">✅</div>
+            <div class="kpi-data">
+              <h3 id="kpiSuccess">1,198</h3>
+              <p>Successful Payments</p>
+            </div>
+            <span class="kpi-change up">↑ 15%</span>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon blue">📈</div>
+            <div class="kpi-data">
+              <h3 id="kpiAvg">₹2,003</h3>
+              <p>Average Donation</p>
+            </div>
+            <span class="kpi-change up">↑ 4%</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+          <!-- Chart -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>📊 Monthly Donations</h3>
+              <select class="admin-filter-select" style="padding:0.4rem 0.6rem; font-size:0.8rem;">
+                <option>2024</option>
+                <option>2023</option>
+              </select>
+            </div>
+            <div class="admin-card-body">
+              <div class="chart-area" id="donationChart"></div>
+              <div class="chart-labels" id="chartLabels"></div>
+            </div>
+          </div>
+
+          <!-- Recent Donors -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <h3>🕐 Recent Donors</h3>
+              <a href="#" class="btn btn-sm btn-outline" style="padding:0.35rem 0.75rem; font-size:0.78rem;" data-goto="donors">View All</a>
+            </div>
+            <div class="admin-card-body">
+              <div class="donor-mini-list" id="recentDonorsList"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Stats Row -->
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem;">
+          <div class="admin-card">
+            <div class="admin-card-body" style="text-align:center;">
+              <span style="font-size:2rem; display:block; margin-bottom:0.5rem;">📱</span>
+              <h3 style="color:var(--clr-light); font-size:1.4rem; font-weight:800;">62%</h3>
+              <p style="color:var(--clr-mid); font-size:0.82rem;">UPI Payments</p>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-body" style="text-align:center;">
+              <span style="font-size:2rem; display:block; margin-bottom:0.5rem;">💳</span>
+              <h3 style="color:var(--clr-light); font-size:1.4rem; font-weight:800;">28%</h3>
+              <p style="color:var(--clr-mid); font-size:0.82rem;">Card Payments</p>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-body" style="text-align:center;">
+              <span style="font-size:2rem; display:block; margin-bottom:0.5rem;">🏦</span>
+              <h3 style="color:var(--clr-light); font-size:1.4rem; font-weight:800;">10%</h3>
+              <p style="color:var(--clr-mid); font-size:0.82rem;">Net Banking</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ DONORS SECTION ============ -->
+      <div class="admin-section" id="sec-donors">
+        <div class="table-controls">
+          <div class="admin-search">
+            <span class="admin-search-icon">🔍</span>
+            <input type="text" id="donorSearch" placeholder="Search donors by name or email..." />
+          </div>
+          <select class="admin-filter-select" id="donorStatusFilter">
+            <option value="all">All Status</option>
+            <option value="success">Success</option>
+            <option value="pending">Pending</option>
+            <option value="failed">Failed</option>
+          </select>
+          <button class="export-btn" id="exportBtn">📥 Export CSV</button>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-table-wrap">
+            <table class="admin-table" id="donorsTable">
+              <thead>
+                <tr>
+                  <th>Donor</th>
+                  <th>Email</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Payment ID</th>
+                </tr>
+              </thead>
+              <tbody id="donorsTableBody"></tbody>
+            </table>
+          </div>
+          <div class="pagination">
+            <p class="pagination-info" id="paginationInfo">Showing 1-10 of 24</p>
+            <div class="pagination-controls" id="paginationControls"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ PAYMENTS SECTION ============ -->
+      <div class="admin-section" id="sec-payments">
+        <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr); margin-bottom:1.5rem;">
+          <div class="kpi-card">
+            <div class="kpi-icon green">✅</div>
+            <div class="kpi-data">
+              <h3>1,198</h3>
+              <p>Successful</p>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon yellow">⏳</div>
+            <div class="kpi-data">
+              <h3>32</h3>
+              <p>Pending</p>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon" style="background:rgba(231,76,60,0.2);">❌</div>
+            <div class="kpi-data">
+              <h3>17</h3>
+              <p>Failed</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>💳 Payment Records</h3>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Payment ID</th>
+                  <th>Donor</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Status</th>
+                  <th>Date & Time</th>
+                </tr>
+              </thead>
+              <tbody id="paymentsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ REPORTS SECTION ============ -->
+      <div class="admin-section" id="sec-reports">
+        <div class="dashboard-grid">
+          <div class="admin-card">
+            <div class="admin-card-header"><h3>📈 Donation Trends</h3></div>
+            <div class="admin-card-body">
+              <div class="chart-area" id="reportChart"></div>
+              <div class="chart-labels" id="reportChartLabels"></div>
+            </div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-header"><h3>📊 Breakdown</h3></div>
+            <div class="admin-card-body">
+              <div style="display:flex; flex-direction:column; gap:1rem;">
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                    <span style="font-size:0.85rem; color:var(--clr-light);">Education</span>
+                    <span style="font-size:0.85rem; color:var(--clr-accent);">35%</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-fill" data-width="35"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                    <span style="font-size:0.85rem; color:var(--clr-light);">Culture & Art</span>
+                    <span style="font-size:0.85rem; color:var(--clr-accent);">25%</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-fill" data-width="25"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                    <span style="font-size:0.85rem; color:var(--clr-light);">Healthcare</span>
+                    <span style="font-size:0.85rem; color:var(--clr-accent);">25%</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-fill" data-width="25"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                    <span style="font-size:0.85rem; color:var(--clr-light);">Operations</span>
+                    <span style="font-size:0.85rem; color:var(--clr-accent);">15%</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-fill" data-width="15"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SETTINGS SECTION ============ -->
+      <div class="admin-section" id="sec-settings">
+        <div class="admin-card" style="max-width:600px;">
+          <div class="admin-card-header"><h3>⚙️ General Settings</h3></div>
+          <div class="admin-card-body">
+            <div class="form-group">
+              <label>Organization Name</label>
+              <input type="text" class="form-control" value="Virtual Tribal Tourism" />
+            </div>
+            <div class="form-group">
+              <label>Admin Email</label>
+              <input type="email" class="form-control" value="admin@virtualtribaltourism.org" />
+            </div>
+            <div class="form-group">
+              <label>Razorpay Key ID</label>
+              <input type="text" class="form-control" value="rzp_test_xxxxxxxxxxxxx" placeholder="rzp_test_..." />
+            </div>
+            <div class="form-group">
+              <label>Donation Goal (₹)</label>
+              <input type="number" class="form-control" value="5000000" />
+            </div>
+            <button class="btn btn-primary" style="margin-top:0.5rem;">💾 Save Settings</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

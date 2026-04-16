@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media Gallery – Virtual Tribal Tourism</title>
+  <meta name="description" content="Watch videos, explore photo galleries, and experience tribal culture through our rich media collection." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/media.css" />
+</head>
+<body>
+
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-spinner"></div>
+  <p class="loader-text">Virtual Tribal Tourism</p>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <img src="" alt="Gallery image" id="lightboxImg" />
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+</div>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="media.html" class="active">Media</a>
+  <a href="index.html#donate">Donate</a>
+</nav>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo" aria-label="Home">
+    <div class="nav-logo-icon">🌿</div>
+    <div class="nav-logo-text">
+      <span>Virtual Tribal</span>
+      <span>Tourism</span>
+    </div>
+  </a>
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="media.html" class="active">Media</a>
+    <a href="index.html#donate" class="nav-donate">💛 Donate Now</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="media-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <span>Media</span>
+    </div>
+    <div class="badge badge-primary" style="margin-bottom:1rem;">🎬 Media Center</div>
+    <h1 class="section-title" style="max-width:600px;">
+      Experience Tribal<br><span class="text-gradient">Culture Visually</span>
+    </h1>
+    <div class="divider" style="margin-left:0;"></div>
+    <p style="max-width:560px; color:var(--clr-mid); line-height:1.8;">
+      Watch documentaries, explore photo galleries, and immerse yourself in the vibrant world of India's indigenous communities.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== FEATURED VIDEO ===================== -->
+<section class="featured-video">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:var(--gap-md);">
+      <div class="badge badge-primary">⭐ Featured</div>
+      <h2 class="section-title" style="margin-top:1rem;">
+        Must <span class="text-gradient">Watch</span>
+      </h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="featured-video-wrap reveal">
+      <div class="featured-video-inner">
+        <div class="featured-video-embed">
+          <iframe
+            id="featuredPlayer"
+            src="https://www.youtube.com/embed/BKorP55Aqvg?rel=0"
+            title="Featured tribal culture video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="featured-video-info">
+          <div class="badge badge-primary">Documentary</div>
+          <h2 id="featuredTitle">The Living Traditions of Indian Tribals</h2>
+          <p id="featuredDesc">
+            An in-depth look at how tribal communities across India are preserving their ancient traditions while adapting to the modern world. Featuring interviews with tribal elders and youth leaders.
+          </p>
+          <div class="featured-playlist">
+            <div class="playlist-item active" data-video="BKorP55Aqvg" data-title="The Living Traditions of Indian Tribals" data-desc="An in-depth look at how tribal communities are preserving their ancient traditions.">
+              <div class="playlist-num">1</div>
+              <span class="playlist-title">The Living Traditions of Indian Tribals</span>
+              <span class="playlist-duration">12:34</span>
+            </div>
+            <div class="playlist-item" data-video="dQw4w9WgXcQ" data-title="Tribal Art: A Visual Journey" data-desc="Explore the stunning visual art traditions of India's indigenous communities.">
+              <div class="playlist-num">2</div>
+              <span class="playlist-title">Tribal Art: A Visual Journey</span>
+              <span class="playlist-duration">8:21</span>
+            </div>
+            <div class="playlist-item" data-video="M7lc1UVf-VE" data-title="Voices from the Village" data-desc="First-person stories from tribal community members about their life and culture.">
+              <div class="playlist-num">3</div>
+              <span class="playlist-title">Voices from the Village</span>
+              <span class="playlist-duration">15:07</span>
+            </div>
+            <div class="playlist-item" data-video="kJQP7kiw5Fk" data-title="Dance of the Tribes" data-desc="A celebration of tribal dance forms from across India — from Warli to Lambadi.">
+              <div class="playlist-num">4</div>
+              <span class="playlist-title">Dance of the Tribes</span>
+              <span class="playlist-duration">10:45</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VIDEO GRID ===================== -->
+<section class="videos-section">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:var(--gap-lg);">
+      <div class="badge badge-primary">▶️ Video Library</div>
+      <h2 class="section-title" style="margin-top:1rem;">
+        Explore <span class="text-gradient">Videos</span>
+      </h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="videos-grid">
+      <!-- Video 1 -->
+      <div class="video-card reveal delay-1">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/BKorP55Aqvg?rel=0" title="Tribal Traditions" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-body">
+          <p class="video-category">Documentary</p>
+          <h3>The Living Traditions</h3>
+          <p>A deep dive into the cultural practices that have survived centuries.</p>
+          <div class="video-meta">
+            <span>📅 Jan 2024</span>
+            <span>⏱ 12:34</span>
+            <span>👁 14K views</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card reveal delay-2">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Tribal Art" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-body">
+          <p class="video-category">Art & Culture</p>
+          <h3>Tribal Art: A Visual Journey</h3>
+          <p>Explore Warli paintings, Gond art, and other indigenous art forms.</p>
+          <div class="video-meta">
+            <span>📅 Feb 2024</span>
+            <span>⏱ 8:21</span>
+            <span>👁 9K views</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card reveal delay-3">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/M7lc1UVf-VE?rel=0" title="Tribal Voices" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-body">
+          <p class="video-category">Stories</p>
+          <h3>Voices from the Village</h3>
+          <p>First-person stories from community members about their lives.</p>
+          <div class="video-meta">
+            <span>📅 Mar 2024</span>
+            <span>⏱ 15:07</span>
+            <span>👁 22K views</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="video-card reveal delay-1">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk?rel=0" title="Tribal Dance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-body">
+          <p class="video-category">Performance</p>
+          <h3>Dance of the Tribes</h3>
+          <p>A celebration of tribal dance forms from Warli to Lambadi.</p>
+          <div class="video-meta">
+            <span>📅 Apr 2024</span>
+            <span>⏱ 10:45</span>
+            <span>👁 31K views</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 5 -->
+      <div class="video-card reveal delay-2">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/60ItHLz5WEA?rel=0" title="Tribal Food" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-body">
+          <p class="video-category">Lifestyle</p>
+          <h3>Forest to Plate: Tribal Cuisine</h3>
+          <p>The unique and sustainable food practices of tribal communities.</p>
+          <div class="video-meta">
+            <span>📅 May 2024</span>
+            <span>⏱ 9:12</span>
+            <span>👁 7K views</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 6 -->
+      <div class="video-card reveal delay-3">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/fJ9rUzIMcZQ?rel=0" title="Tribal Music" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="video-body">
+          <p class="video-category">Music</p>
+          <h3>Rhythms of the Forest</h3>
+          <p>Traditional tribal instruments and songs recorded in their natural setting.</p>
+          <div class="video-meta">
+            <span>📅 Jun 2024</span>
+            <span>⏱ 11:33</span>
+            <span>👁 18K views</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="media-gallery">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:var(--gap-md);">
+      <div class="badge badge-primary">📸 Photo Gallery</div>
+      <h2 class="section-title" style="margin-top:1rem;">
+        Image <span class="text-gradient">Gallery</span>
+      </h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="media-gallery-filter" style="justify-content:center; margin-bottom:var(--gap-md);">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="culture">Culture</button>
+      <button class="filter-btn" data-filter="art">Art</button>
+      <button class="filter-btn" data-filter="education">Education</button>
+      <button class="filter-btn" data-filter="nature">Nature</button>
+    </div>
+
+    <div class="media-gallery-grid reveal">
+      <div class="media-gallery-item" data-category="culture">
+        <img src="https://images.unsplash.com/photo-1523803326055-9729b9e02e5a?w=600&q=80" alt="Tribal cultural ceremony" loading="lazy" />
+        <div class="media-gallery-overlay"><span>🔍</span><p>Tribal Dance Ceremony</p></div>
+      </div>
+      <div class="media-gallery-item" data-category="art">
+        <img src="https://images.unsplash.com/photo-1590845947670-c009801ffa74?w=600&q=80" alt="Tribal art workshop" loading="lazy" />
+        <div class="media-gallery-overlay"><span>🔍</span><p>Art Workshop</p></div>
+      </div>
+      <div class="media-gallery-item" data-category="education">
+        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80" alt="Tribal school" loading="lazy" />
+        <div class="media-gallery-overlay"><span>🔍</span><p>Education Drive</p></div>
+      </div>
+      <div class="media-gallery-item" data-category="nature">
+        <img src="https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=600&q=80" alt="Tribal village" loading="lazy" />
+        <div class="media-gallery-overlay"><span>🔍</span><p>Village Landscape</p></div>
+      </div>
+      <div class="media-gallery-item" data-category="culture">
+        <img src="https://images.unsplash.com/photo-1542810205-0a5b379f9c52?w=600&q=80" alt="Tribal weaving" loading="lazy" />
+        <div class="media-gallery-overlay"><span>🔍</span><p>Traditional Weaving</p></div>
+      </div>
+      <div class="media-gallery-item" data-category="art">
+        <img src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=600&q=80" alt="Tribal painting" loading="lazy" />
+        <div class="media-gallery-overlay"><span>🔍</span><p>Folk Painting</p></div>
+      </div>
+      <div class="media-gallery-item" data-category="nature">
+        <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=600&q=80" alt="Forest trails" loading="lazy" />
+        <div class="media-gallery-overlay"><span>🔍</span><p>Forest Trails</p></div>
+      </div>
+      <div class="media-gallery-item" data-category="culture">
+        <img src="https://images.unsplash.com/photo-1533669955142-6a73332af4db?w=600&q=80" alt="Tribal festival" loading="lazy" />
+        <div class="media-gallery-overlay"><span>🔍</span><p>Festival Celebrations</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:0.75rem; display:inline-flex;">
+          <div class="nav-logo-icon">🌿</div>
+          <div class="nav-logo-text">
+            <span>Virtual Tribal Tourism</span>
+            <span>Support & Exploration</span>
+          </div>
+        </a>
+        <p>A donation-driven initiative dedicated to preserving tribal culture and empowering communities.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="about.html">ℹ️ About Us</a></li>
+          <li><a href="media.html">🎬 Media</a></li>
+          <li><a href="index.html#donate">💛 Donate Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Programs</h4>
+        <ul>
+          <li><a href="#">🎓 Education Drive</a></li>
+          <li><a href="#">🎨 Art Preservation</a></li>
+          <li><a href="#">🏥 Health Camps</a></li>
+          <li><a href="#">🌱 Livelihood Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item"><span>📍</span><span>123 Heritage Lane, Bhubaneswar, Odisha</span></div>
+        <div class="footer-contact-item"><span>📧</span><span>support@virtualtribaltourism.org</span></div>
+        <div class="footer-contact-item"><span>📱</span><span>+91 94XXX XXXXX</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Virtual Tribal Tourism. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/animations.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Featured player switching
+  document.querySelectorAll('.playlist-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.playlist-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      const vid = item.dataset.video;
+      document.getElementById('featuredPlayer').src = `https://www.youtube.com/embed/${vid}?rel=0&autoplay=1`;
+      document.getElementById('featuredTitle').textContent = item.dataset.title;
+      document.getElementById('featuredDesc').textContent = item.dataset.desc;
+    });
+  });
+
+  // Gallery filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.filter;
+      document.querySelectorAll('.media-gallery-item').forEach(item => {
+        if (cat === 'all' || item.dataset.category === cat) {
+          item.style.display = '';
+          item.style.animation = 'scaleIn 0.4s ease forwards';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Gallery lightbox
+  document.querySelectorAll('.media-gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const lb = document.getElementById('lightbox');
+      const img = item.querySelector('img');
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightboxImg').alt = img.alt;
+      lb.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>

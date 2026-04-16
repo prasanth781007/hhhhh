@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual Tribal Tourism – Explore Tribal Culture & Support Tribals</title>
+  <meta name="description" content="Virtual Tribal Tourism is a donation-driven initiative to preserve tribal culture, support tribal education, and promote indigenous heritage across India." />
+  <meta name="keywords" content="tribal tourism, donate tribals, tribal culture, indigenous support, tribal education" />
+  <meta property="og:title" content="Virtual Tribal Tourism – Support Tribal Communities" />
+  <meta property="og:description" content="Help us preserve and promote tribal culture. Every donation makes a difference." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
+
+  <!-- Razorpay Script -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+</head>
+<body>
+
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-spinner"></div>
+  <p class="loader-text">Virtual Tribal Tourism</p>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <img src="" alt="Gallery image" id="lightboxImg" />
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+</div>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="index.html" class="active">Home</a>
+  <a href="about.html">About</a>
+  <a href="media.html">Media</a>
+  <a href="#donate" id="mobileNavDonate">Donate</a>
+</nav>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo" aria-label="Virtual Tribal Tourism Home">
+    <div class="nav-logo-icon">🌿</div>
+    <div class="nav-logo-text">
+      <span>Virtual Tribal</span>
+      <span>Tourism</span>
+    </div>
+  </a>
+
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="media.html">Media</a>
+    <a href="#donate" class="nav-donate">💛 Donate Now</a>
+  </nav>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+
+  <!-- Floating particles -->
+  <div class="hero-particles" id="heroParticles"></div>
+
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Cultural Preservation Initiative
+    </div>
+
+    <h1 class="hero-title">
+      Virtual<br />
+      <strong>Tribal Tourism</strong>
+    </h1>
+
+    <p class="hero-subtitle">
+      Explore the rich heritage of India's indigenous communities. Your donation preserves ancient traditions, empowers tribal artisans, and builds a brighter future.
+    </p>
+
+    <div class="hero-cta">
+      <a href="#donate" class="btn btn-primary animate-pulse-btn" id="heroDonateBtn">
+        💛 Donate Now
+      </a>
+      <a href="about.html" class="btn btn-outline">
+        Learn More ›
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="hero-stats">
+    <div class="hero-stat reveal delay-1">
+      <span class="hero-stat-num" data-count="1200">0</span>
+      <span class="hero-stat-label">Donors</span>
+    </div>
+    <div class="hero-stat reveal delay-2">
+      <span class="hero-stat-num" data-count="48">0</span>
+      <span class="hero-stat-label">Villages</span>
+    </div>
+    <div class="hero-stat reveal delay-3">
+      <span class="hero-stat-num" data-count="320">0</span>
+      <span class="hero-stat-label">Families</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ===================== IMPACT STRIP ===================== -->
+<section class="impact-section">
+  <div class="container">
+    <div class="impact-numbers">
+      <div class="impact-num reveal delay-1">
+        <span class="impact-num-value" data-count="2500000">0</span>
+        <p class="impact-num-label">₹ Total Raised</p>
+      </div>
+      <div class="impact-num reveal delay-2">
+        <span class="impact-num-value" data-count="1247">0</span>
+        <p class="impact-num-label">Generous Donors</p>
+      </div>
+      <div class="impact-num reveal delay-3">
+        <span class="impact-num-value" data-count="48">0</span>
+        <p class="impact-num-label">Tribal Villages</p>
+      </div>
+      <div class="impact-num reveal delay-4">
+        <span class="impact-num-value" data-count="320">0</span>
+        <p class="impact-num-label">Families Supported</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT DONATION ===================== -->
+<section class="about-donation section-pad" id="about-donation">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal-left">
+        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80" alt="Tribal children learning" loading="lazy" />
+        <div class="about-image-badge">
+          <strong>8+</strong>
+          <span>Years of Impact</span>
+        </div>
+      </div>
+
+      <div class="about-content reveal-right">
+        <div class="badge badge-primary">🌿 Why We Exist</div>
+        <h2 class="section-title" style="text-align:left; margin-top:1rem;">
+          Supporting Tribal<br /><span class="text-gradient">Communities</span>
+        </h2>
+        <div class="divider" style="margin-left:0;"></div>
+
+        <p>
+          India's tribal communities are custodians of ancient wisdom, art forms, and ecological knowledge passed down for generations. Yet they remain among the most marginalized—with limited access to education, healthcare, and economic opportunities.
+        </p>
+        <p>
+          Virtual Tribal Tourism bridges this gap by creating digital visibility for tribal cultures while channeling donations directly to community upliftment programs. Every rupee you give creates real, measurable change.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">🎓</div>
+            <div class="about-feature-text">
+              <h5>Education Support</h5>
+              <p>School kits & scholarships</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🎨</div>
+            <div class="about-feature-text">
+              <h5>Art Preservation</h5>
+              <p>Traditional craft training</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🏥</div>
+            <div class="about-feature-text">
+              <h5>Healthcare</h5>
+              <p>Mobile medical camps</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🌱</div>
+            <div class="about-feature-text">
+              <h5>Livelihood</h5>
+              <p>Skill development programs</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--gap-md);">
+          <a href="#donate" class="btn btn-primary">Donate & Make Impact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== USAGE OF DONATION ===================== -->
+<section class="donation-usage section-pad" id="usage">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="badge badge-primary">💰 Transparency Matters</div>
+      <h2 class="section-title" style="margin-top:1rem;">
+        How Your <span class="text-gradient">Donation</span> Is Used
+      </h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">
+        100% transparent fund allocation. Every rupee is tracked and reported to our donor community.
+      </p>
+    </div>
+
+    <div class="usage-grid">
+      <div class="usage-card reveal delay-1">
+        <div class="usage-icon">🎓</div>
+        <h3>Education</h3>
+        <p>School supplies, scholarships, and digital literacy programs for tribal youth.</p>
+        <span class="usage-percentage">35%</span>
+        <div class="progress-bar">
+          <div class="progress-fill" data-width="35"></div>
+        </div>
+      </div>
+
+      <div class="usage-card reveal delay-2">
+        <div class="usage-icon">🎨</div>
+        <h3>Culture & Art</h3>
+        <p>Preserving folk arts, traditional music, dance, and craftwork through workshops.</p>
+        <span class="usage-percentage">25%</span>
+        <div class="progress-bar">
+          <div class="progress-fill" data-width="25"></div>
+        </div>
+      </div>
+
+      <div class="usage-card reveal delay-3">
+        <div class="usage-icon">🏥</div>
+        <h3>Healthcare</h3>
+        <p>Mobile medical camps, nutrition programs, and maternal health support.</p>
+        <span class="usage-percentage">25%</span>
+        <div class="progress-bar">
+          <div class="progress-fill" data-width="25"></div>
+        </div>
+      </div>
+
+      <div class="usage-card reveal delay-4">
+        <div class="usage-icon">⚙️</div>
+        <h3>Operations</h3>
+        <p>Administration, outreach, and platform maintenance costs.</p>
+        <span class="usage-percentage">15%</span>
+        <div class="progress-bar">
+          <div class="progress-fill" data-width="15"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DONATION FORM ===================== -->
+<section class="donation-section section-pad" id="donate">
+  <div class="container">
+    <div class="donation-wrap">
+      <!-- Info side -->
+      <div class="donation-info reveal-left">
+        <div class="badge badge-primary">💛 Make a Difference</div>
+        <h2 style="margin-top:1rem;">
+          Your Contribution<br /><span class="text-gradient">Changes Lives</span>
+        </h2>
+        <div class="divider" style="margin-left:0;"></div>
+
+        <p>
+          Every donation, big or small, directly funds education, healthcare, and cultural preservation for India's tribal communities. You'll receive a detailed receipt and annual impact report.
+        </p>
+
+        <div class="donation-progress">
+          <div class="donation-progress-header">
+            <span class="raised" id="raisedAmount">₹25,00,000</span>
+            <span class="goal">Goal: ₹50,00,000</span>
+          </div>
+          <div class="progress-bar" style="height:12px;">
+            <div class="progress-fill" data-width="50" style="height:12px;"></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-top:6px;">
+            <span style="font-size:0.8rem; color:var(--clr-mid);">50% funded</span>
+            <span style="font-size:0.8rem; color:var(--clr-mid);">1,247 donors</span>
+          </div>
+        </div>
+
+        <!-- Impact cards -->
+        <div style="display:flex; flex-direction:column; gap:0.75rem; margin-top:var(--gap-md);">
+          <div class="glass" style="padding:1rem; display:flex; align-items:center; gap:0.75rem;">
+            <span style="font-size:1.5rem;">📚</span>
+            <div>
+              <strong style="color:var(--clr-light); font-size:0.9rem;">₹500</strong>
+              <span style="color:var(--clr-mid); font-size:0.85rem;"> — Provides school kit for 1 child</span>
+            </div>
+          </div>
+          <div class="glass" style="padding:1rem; display:flex; align-items:center; gap:0.75rem;">
+            <span style="font-size:1.5rem;">🏥</span>
+            <div>
+              <strong style="color:var(--clr-light); font-size:0.9rem;">₹1,000</strong>
+              <span style="color:var(--clr-mid); font-size:0.85rem;"> — Funds 1 medical camp visit</span>
+            </div>
+          </div>
+          <div class="glass" style="padding:1rem; display:flex; align-items:center; gap:0.75rem;">
+            <span style="font-size:1.5rem;">🎨</span>
+            <div>
+              <strong style="color:var(--clr-light); font-size:0.9rem;">₹2,500</strong>
+              <span style="color:var(--clr-mid); font-size:0.85rem;"> — Supports artisan for 1 month</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="donation-secure" style="margin-top:1.5rem;">
+          <span>🔒</span>
+          <span>Secured by Razorpay · SSL Encrypted · 80G Tax Benefit Available</span>
+        </div>
+      </div>
+
+      <!-- Form side -->
+      <div class="donation-form-card reveal-right">
+        <h3 style="font-family:var(--font-heading); font-size:1.4rem; margin-bottom:1.5rem; color:var(--clr-light);">
+          Make a Donation
+        </h3>
+
+        <form id="donationForm" novalidate>
+          <div class="form-row">
+            <div class="form-group" id="fg-name">
+              <label for="donorName">Full Name <span>*</span></label>
+              <input type="text" id="donorName" name="name" class="form-control" placeholder="Your full name" autocomplete="name" required />
+              <p class="form-error-msg">Please enter your name</p>
+            </div>
+            <div class="form-group" id="fg-email">
+              <label for="donorEmail">Email Address <span>*</span></label>
+              <input type="email" id="donorEmail" name="email" class="form-control" placeholder="you@example.com" autocomplete="email" required />
+              <p class="form-error-msg">Please enter a valid email</p>
+            </div>
+          </div>
+
+          <div class="form-group" id="fg-phone">
+            <label for="donorPhone">Phone Number</label>
+            <input type="tel" id="donorPhone" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX" autocomplete="tel" />
+          </div>
+
+          <div class="form-group" id="fg-amount">
+            <label>Donation Amount <span>*</span></label>
+            <div class="amount-presets">
+              <button type="button" class="amount-btn" data-amount="500">₹500</button>
+              <button type="button" class="amount-btn" data-amount="1000">₹1,000</button>
+              <button type="button" class="amount-btn active" data-amount="2500">₹2,500</button>
+              <button type="button" class="amount-btn" data-amount="5000">₹5,000</button>
+            </div>
+            <span class="custom-amount-label">Or enter a custom amount:</span>
+            <div style="position:relative;">
+              <span style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--clr-mid); font-weight:600;">₹</span>
+              <input type="number" id="donorAmount" name="amount" class="form-control" placeholder="Enter amount" min="50" style="padding-left:2rem;" value="2500" required />
+            </div>
+            <p class="form-error-msg">Minimum donation is ₹50</p>
+          </div>
+
+          <div class="form-group">
+            <label>Payment Method</label>
+            <div class="payment-options">
+              <div class="payment-option active" data-method="upi">
+                <span class="pay-icon">📱</span> UPI
+              </div>
+              <div class="payment-option" data-method="card">
+                <span class="pay-icon">💳</span> Card
+              </div>
+              <div class="payment-option" data-method="netbanking">
+                <span class="pay-icon">🏦</span> Net Banking
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="donorMessage">Message (Optional)</label>
+            <textarea id="donorMessage" name="message" class="form-control" rows="2" placeholder="Share why you're donating..." style="resize:vertical;"></textarea>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1.25rem;">
+            <input type="checkbox" id="taxBenefit" name="taxBenefit" style="accent-color:var(--clr-primary); width:16px; height:16px;" />
+            <label for="taxBenefit" style="font-size:0.85rem; color:var(--clr-mid); cursor:pointer;">
+              I want to claim 80G tax benefit
+            </label>
+          </div>
+
+          <button type="submit" class="donate-submit-btn" id="donateSubmitBtn">
+            <span class="btn-spinner"></span>
+            <span class="btn-text">🔒 Donate Securely via Razorpay</span>
+          </button>
+
+          <p style="text-align:center; font-size:0.78rem; color:var(--clr-mid); margin-top:0.75rem;">
+            By donating, you agree to our <a href="#" style="color:var(--clr-accent);">Terms</a> &amp;
+            <a href="#" style="color:var(--clr-accent);">Privacy Policy</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="testimonials section-pad" id="testimonials">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="badge badge-primary">🌟 Donor Stories</div>
+      <h2 class="section-title" style="margin-top:1rem;">
+        What Our <span class="text-gradient">Donors Say</span>
+      </h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal delay-1">
+        <div class="testimonial-amount">₹5,000</div>
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="testimonial-text">
+          A truly moving initiative. I visited a tribal village through their virtual tour and was blown away by the culture. Donating felt natural — I want to see these traditions thrive!
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div class="testimonial-info">
+            <h5>Rahul Sharma</h5>
+            <p>Software Engineer, Bengaluru</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-2">
+        <div class="testimonial-amount">₹2,500</div>
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="testimonial-text">
+          The transparency of this organization is incredible. I get quarterly updates on exactly how my money was spent. Seeing children smile with school supplies I funded is priceless.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">P</div>
+          <div class="testimonial-info">
+            <h5>Priya Nair</h5>
+            <p>Teacher, Kochi</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-3">
+        <div class="testimonial-amount">₹10,000</div>
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="testimonial-text">
+          I've been donating for 3 years now. The impact reports show real data — lives improved, villages connected to the internet, artisans earning more. This is what charity should look like.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div class="testimonial-info">
+            <h5>Arjun Mehta</h5>
+            <p>Entrepreneur, Mumbai</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-1">
+        <div class="testimonial-amount">₹1,000</div>
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="testimonial-text">
+          Even as a student with limited funds, I could make a difference. The ₹500 option funds a child's school kit. Amazing concept — making cultural preservation accessible to everyone.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div class="testimonial-info">
+            <h5>Sneha Krishnan</h5>
+            <p>Student, Chennai</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-2">
+        <div class="testimonial-amount">₹7,500</div>
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="testimonial-text">
+          I donate in memory of my grandmother who was from a tribal family. This initiative honours people like her — their art, their stories, their way of life. Beautiful work!
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">V</div>
+          <div class="testimonial-info">
+            <h5>Vijay Kumar</h5>
+            <p>Retired Officer, Hyderabad</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal delay-3">
+        <div class="testimonial-amount">₹3,000</div>
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <p class="testimonial-text">
+          The Razorpay payment was seamless and secure. Got my receipt immediately. And the virtual tribal tour experience made me feel connected to the community I was helping.
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div class="testimonial-info">
+            <h5>Meera Joshi</h5>
+            <p>Graphic Designer, Pune</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="gallery-section section-pad" id="gallery">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="badge badge-primary">📸 Visual Journey</div>
+      <h2 class="section-title" style="margin-top:1rem;">
+        Tribal Culture <span class="text-gradient">Gallery</span>
+      </h2>
+      <div class="divider"></div>
+      <p class="section-subtitle">
+        A glimpse into the vibrant, rich, and diverse world of India's tribal communities.
+      </p>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item large" data-caption="Tribal Traditions">
+        <img src="https://images.unsplash.com/photo-1523803326055-9729b9e02e5a?w=800&q=80" alt="Tribal cultural dance" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-overlay-text">🎭 Tribal Traditions</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-caption="Art & Craft">
+        <img src="https://images.unsplash.com/photo-1590845947670-c009801ffa74?w=800&q=80" alt="Tribal artisan at work" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-overlay-text">🎨 Art & Craft</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-caption="Education">
+        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80" alt="Tribal children learning" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-overlay-text">📚 Education</p>
+        </div>
+      </div>
+      <div class="gallery-item wide" data-caption="Community Life">
+        <img src="https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=800&q=80" alt="Tribal community gathering" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-overlay-text">🌿 Community Life</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-caption="Heritage">
+        <img src="https://images.unsplash.com/photo-1542810205-0a5b379f9c52?w=800&q=80" alt="Tribal heritage site" loading="lazy" />
+        <div class="gallery-overlay">
+          <p class="gallery-overlay-text">🏛️ Heritage</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:var(--gap-md);">
+      <a href="media.html" class="btn btn-outline">View Full Gallery →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="margin-bottom:0.75rem; display:inline-flex;">
+          <div class="nav-logo-icon">🌿</div>
+          <div class="nav-logo-text">
+            <span>Virtual Tribal Tourism</span>
+            <span>Support & Exploration</span>
+          </div>
+        </a>
+        <p>
+          A donation-driven initiative dedicated to preserving tribal culture, promoting indigenous art, and empowering tribal communities across India.
+        </p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">🏠 Home</a></li>
+          <li><a href="about.html">ℹ️ About Us</a></li>
+          <li><a href="media.html">🎬 Media</a></li>
+          <li><a href="#donate">💛 Donate Now</a></li>
+          <li><a href="admin.html">🔐 Admin Panel</a></li>
+        </ul>
+      </div>
+
+      <!-- Programs -->
+      <div class="footer-col">
+        <h4>Our Programs</h4>
+        <ul>
+          <li><a href="#">🎓 Education Drive</a></li>
+          <li><a href="#">🎨 Art Preservation</a></li>
+          <li><a href="#">🏥 Health Camps</a></li>
+          <li><a href="#">🌱 Livelihood Support</a></li>
+          <li><a href="#">📷 Cultural Documentation</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <div class="footer-contact-item">
+          <span>📍</span>
+          <span>123 Heritage Lane, Tribal Nagar,<br />Bhubaneswar, Odisha 751001</span>
+        </div>
+        <div class="footer-contact-item">
+          <span>📧</span>
+          <span>support@virtualtribaltourism.org</span>
+        </div>
+        <div class="footer-contact-item">
+          <span>📱</span>
+          <span>+91 94XXX XXXXX</span>
+        </div>
+        <div class="footer-contact-item">
+          <span>🕐</span>
+          <span>Mon–Sat: 9 AM – 6 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Virtual Tribal Tourism. All rights reserved. | 80G Tax Benefits Available</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="#" style="color:var(--clr-mid); font-size:0.85rem; transition:var(--transition);" onmouseover="this.style.color='var(--clr-accent)'" onmouseout="this.style.color='var(--clr-mid)'">Privacy Policy</a>
+        <a href="#" style="color:var(--clr-mid); font-size:0.85rem; transition:var(--transition);" onmouseover="this.style.color='var(--clr-accent)'" onmouseout="this.style.color='var(--clr-mid)'">Terms of Use</a>
+        <a href="#" style="color:var(--clr-mid); font-size:0.85rem; transition:var(--transition);" onmouseover="this.style.color='var(--clr-accent)'" onmouseout="this.style.color='var(--clr-mid)'">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/animations.js"></script>
+<script src="js/main.js"></script>
+<script src="js/payment.js"></script>
+</body>
+</html>
